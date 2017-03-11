@@ -1,35 +1,34 @@
-let playGround = new Array(100) //棋盘
-let realPlayGround = $('#playGround')
+var col=40
+var row=20
+
+
+var table= '<table id="playGround">'+('<tr>'+'<td></td>'.repeat(col)+'</tr>').repeat(row)+'</table>'
+$('body').html(table)
+let playGround = new Array(col*row) //棋盘
 let path=[{x:7,y:7}]	//蛇的起始位置
 let directionSet=[{i:0,j:-1},{i:1,j:0},{i:0,j:1},{i:-1,j:0}]
 
 
 
-// let app  = {
-// 	init:function{
-
-// 	}
-// }
-
 function coor2Index(coor){
 	let {x,y} = coor
-	let index = (y-1)*10+x
+	let index = (y-1)*col+x
 	return index
 }
 
 
 function render(coor,object){
 	let index = coor2Index(coor)
-	realPlayGround.find('td').eq(index-1).html(object)
+	$('#playGround').find('td').eq(index-1).html(object)
 }
 
 function clear(coor){
 	let index = coor2Index(coor)
-	realPlayGround.find('td').eq(index-1).empty()
+	$('#playGround').find('td').eq(index-1).empty()
 }
 
 function judge(coor){
-	if(coor.x===0||coor.x===11||coor.y===0||coor.y===11){ //越界
+	if(coor.x===0||coor.x===(col+1)||coor.y===0||coor.y===(row+1)){ //越界
 		return 1 //game over
 	}else if(arrayContainsObj(path,coor)){ //碰到自身轨迹
 		console.log('hha')
@@ -102,7 +101,7 @@ class food{
 	}
 
 	render(coor){
-		let food=1
+		let food='<div class="food"></div>'
 		render(coor,food)	
 	}
 }
@@ -131,21 +130,23 @@ class snake{
 			path.push(coor)
 			if(isEqual(coor,food1.coor)){
 				food1.newFood()
+				console.log('haha')
 			}else{
 				// 清除最后一格
 				clear(path[0])
 				path.shift()
 			}
 			self.renderPath()
-		},500)
+		},300)
 
 	}
 
 	renderPath(){
-		let snake=2
+		let snake='<div class="snake"></div>'
 		for(let i=0;i<path.length;i++){
 			render(path[i],snake)
 		}
+		console.log(path.length)
 	}
 
 	changeDirection(direction){
