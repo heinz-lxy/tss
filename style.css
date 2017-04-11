@@ -1,26 +1,26 @@
 table,tr,td{
-	border:1px solid black;
+	/*border:1px solid black;*/
 }
 td{
-	width:35px;
-	height:35px;
+	width:15px;
+	height:15px;
 }
 
 table{
 	 border-collapse:collapse;
 }
 
-.black-chesspiece{
+.snake{
+	position: fixed;
 	border-radius: 50%;
 	background-color: black;
-	width:33px;
-	height:33px
+	width:13px;
+	height:13px
 }
 
-.white-chesspiece{
-	border-radius: 50%;
-	border:1px solid black;
-	width:33px;
-	height:33px
+.food{
+	background-color: pink;
+	width:10px;
+	height:10px
 
 }

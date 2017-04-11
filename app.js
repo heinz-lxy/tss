@@ -89,6 +89,7 @@ class food{
 	constructor(){
 		this.coor={x:5,y:5}  //食物的起始位置
 		this.render(this.coor)
+		console.log('hehe')
 	}
 	newFood(){
 		clear(this.coor)
