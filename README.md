@@ -1,5 +1,5 @@
-# tss
-贪食蛇游戏
+# snake
+贪吃蛇游戏
 
 ## Demo地址
-https://heinz-lxy.github.io/tss/
+http://1.117.214.111／projects／snake
